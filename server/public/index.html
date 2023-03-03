@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vendors/jquery-3.6.3.js"></script>
+    <script src="./scripts/client.js"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>SERVER SIDE CALCULATOR</title>
 </head>
+
 <body>
     <h1>Calculatron</h1>
-</body>
+    <div id="inputArea">
+        <input id="playerOneNameInput" class="inputFormField" type="number" placeholder="enter a number">
+        <button id="plusSign">+</button>
+        <button id="minusSign">-</button>
+        <button id="multiplySign">*</button>
+        <button id="divideSign">/</button>
+        <input id="playerTwoNameInput" class="inputFormField" type="number" placeholder="enter a numnber">
+        <button id="submitButton">=</button>
+        <button id="clearButton">C</button>
+      </div>
+    
+      <div id="currentAnswerArea">
+        <!-- answer to current calc will be rendered here -->
+        <!-- the below will be appended -->
+        <p id="currentAnswer">Solution:</p> 
+      </div>
+    
+    <div id="tableArea">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Previous Evaluation</th>
+            <th>Previous Answer</th>
+          </tr>
+        </thead>
+        <tbody id="content"></tbody>
+            <tr>
+                <td>Content</th>
+                <td>Content</th>            
+            </tr>
+            <tr>
+                <td>Content</th>
+                <td>Content</th>            
+            </tr>
+            <tr>
+                <td>Content</th>
+                <td>Content</th>            
+            </tr>
+      </table>
+    </div>
+    
+    <div>
+        <ul id="calcHistoryArea">
+        <!-- guesses will be rendered here -->
+        </ul>
+    </div>
 </html>
