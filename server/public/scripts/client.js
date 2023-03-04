@@ -16,6 +16,7 @@ function onReady() {
     $('#divideSign').on('click', divideSignClick);
     $('#submitButton').on('click', submitButtonClick);
     $('#clearButton').on('click', clearButtonClick);
+    getForRender();
 }
 
 function plusSignClick() {
@@ -56,7 +57,7 @@ function submitButtonClick() {
         currentCalculation.numberTwo = num2
         
         submitCalcPost(currentCalculation);
-        clearInputs();
+        
         
         } else {
             alert('Please enter a number into both fields.')
@@ -77,18 +78,63 @@ function clearInputs() {
     $('#numberTwoInput').val('');
 }
 
-function render() {
+function getForRender() {
     console.log('rendering!')
     $.ajax({
         method: 'GET',
         url: '/retrieveArray'
     }).then(function(response) {
-        console.log('AJAX retrieveArray Get Success!', response);
+        console.log('AJAX get Success!', response);
+        render(response)
     }).catch(function() {
         alert('Request Failed. Try again later.')
     });
 }
 
+function getCurrentAnswer() {
+    $.ajax({
+        method: 'GET',
+        url: '/retrieveCurrentAnswer'
+    }).then(function(response) {
+        $('#currentAnswerArea').html(`
+        <table>
+          <thead>
+            <tr>
+              <td>Current Computation</td>
+              <td>Current Answer</td>
+            </tr>
+            <tr>
+                <td>${currentCalculation.numberOne} ${currentCalculation.operator} ${currentCalculation.numberTwo}</td>
+                <td>${response}</td>
+          </thead>
+        </table>
+        `)
+        clearInputs();
+    })
+}
+
+function render(response) {
+    getCurrentAnswer()
+    $('#calcHistoryArea').empty()
+    $('#calcHistoryArea').append(`
+    <thead>
+        <tr>
+            <th>Previous Evaluations</th>
+        </tr>
+    </thead>
+    <tbody>
+    `)
+    for (calculation of response) {
+        $('#calcHistoryArea').append(`
+        <tr>
+            <td>${calculation.numberOne} ${calculation.operator} ${calculation.numberTwo} = ${calculation.answer}<td>
+        </tr>
+        `)
+    }
+    $('#calcHistoryArea').append(`
+    </tbody>
+    `)
+}
 
 function submitCalcPost() {
     console.log('in submitCalcPost')
@@ -98,7 +144,7 @@ function submitCalcPost() {
         data: currentCalculation
     }).then(function(response) {
         console.log('Submit Calc POST request success; calculating on server side')
-        render()
+        getForRender()
     }).catch(function() {
         alert('submitCalc POST request failed. Try again later.')
     })

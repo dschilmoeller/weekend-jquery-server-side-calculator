@@ -26,36 +26,20 @@
       <div id="currentAnswerArea">
         <!-- answer to current calc will be rendered here -->
         <!-- the below will be appended -->
-        <p id="currentAnswer">Solution:</p> 
+        <table>
+          <thead>
+            <tr>
+              <td>Current Computation</td>
+              <td>Current Answer</td>
+            </tr>
+          </thead>
+        </table>
       </div>
     
-    <div id="tableArea">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Previous Evaluation</th>
-            <th>Previous Answer</th>
-          </tr>
-        </thead>
-        <tbody id="content"></tbody>
-            <tr>
-                <td>Content</th>
-                <td>Content</th>            
-            </tr>
-            <tr>
-                <td>Content</th>
-                <td>Content</th>            
-            </tr>
-            <tr>
-                <td>Content</th>
-                <td>Content</th>            
-            </tr>
-      </table>
-    </div>
     
     <div>
-        <ul id="calcHistoryArea">
-        <!-- guesses will be rendered here -->
-        </ul>
+        <table id="calcHistoryArea">
+        <!-- previous calculations will be rendered here -->
+        </table>
     </div>
 </html>

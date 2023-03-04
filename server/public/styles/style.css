@@ -11,3 +11,7 @@ table {
 * {
     text-align: center;
 }
+
+div {
+    padding-top: 2rem;
+}
