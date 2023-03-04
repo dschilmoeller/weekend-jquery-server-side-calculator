@@ -15,8 +15,21 @@ let currentOperator;
 let currentAnswer;
 let calcHistoryArray = []
 
-app.post('/plusButton', function(req, res) {
-    console.log('Yo Schwami plus button pushed');
-    currentOperator = +    
+app.get('/retrieveArray', function(req, res) {
+    console.log('Yo Schwami retrieving array');
     res.send(calcHistoryArray);
 })
+
+app.post('/', (req, res) => {
+    // console.log("app.post success.") // 
+    let incomingNumberOne = req.body.numberOne;
+    let incomingNumberTwo = req.body.numberTwo;
+    let incomingOperator = req.body.operator
+    let incomingObject = {
+        numberOne: incomingNumberOne,
+        numberTwo: incomingNumberTwo,
+        operator: incomingOperator
+    }
+    console.log('incoming object is', incomingObject)
+    res.sendStatus(201);
+    })

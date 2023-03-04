@@ -1,23 +1,87 @@
-let symbol = "+"; 
-let answer
+$(document).ready(onReady);
 
-function math(num1, num2) {
-    answer = (num1) + symbol + (num2) 
+// variable of object to be POSTed.
+let currentCalculation = {
+    // static for testing
+    numberOne: '1',
+    numberTwo: '2',
+    operator: '+'
 }
 
-math(1,2)
-// I think we're going to need to send the index.html 
-// numerical inputs EVERY time to variables when an operand POST is called.
-// basically if + is clicked, transmit the numbers (if any) to a math-eval 
-// and only transmit the final result back when the = sign is clicked.
-// so will be doing a bunch of NaN math
+// listeners
+function onReady() {
+    $('#plusSign').on('click', plusSignClick);
+    $('#minusSign').on('click', minusSignClick);
+    $('#multiplySign').on('click', multiplySignClick);
+    $('#divideSign').on('click', divideSignClick);
+    $('#submitButton').on('click', submitButtonClick);
+    $('#clearButton').on('click', clearButtonClick);
+}
+
+function plusSignClick() {
+    // console.log('plus sign clicked');
+}
+
+function minusSignClick() {
+    // console.log('minus sign clicked');
+}
+
+function multiplySignClick() {
+    // console.log('multiply sign clicked');
+}
+
+function divideSignClick() {
+    // console.log('divide sign clicked');
+}
+
+function submitButtonClick() {
+    // console.log('submit button clicked');
+    submitCalcPost();
+    clearInputs();
+}
+
+function clearButtonClick() {
+    // console.log('clear button clicked');
+    clearInputs()
+}
+
+function clearInputs() {
+    $('#numberOneInput').val('');
+    $('#numberTwoInput').val('');
+}
+
+function render(variable) {
+    console.log('rendering!', variable)
+    $.ajax({
+        method: 'GET',
+        url: '/retrieveArray'
+    }).then(function(response) {
+        console.log('AJAX retrieveArray Get Success!', response);
+    }).catch(function() {
+        alert('Request Failed. Try again later.')
+    });
+}
+
+
+function submitCalcPost() {
+    console.log('in submitCalcPost')
+    $.ajax({
+        method: 'POST',
+        url: '/',
+        data: currentCalculation
+    }).then(function(response) {
+        console.log('Submit Calc POST request success; calculating on server side')
+        render()
+    }).catch(function() {
+        alert('submitCalc POST request failed. Try again later.')
+    })
+}
+
+// *client* create an objectwith num1, num2, and operator
+// *server* for loop to evaluate, with if/else logic dependent on operator in the object passed.
 
 // discuss with Paige.
 // External libraries and eval() are verboten.
 // Other option is some kind of string parsing, I think.
 
-// create a client side object consisting of 2 numbers and an operator.
-// server side logic based on operator? eg. if operator: + do a num1 + num2, if operator: - do a 
-// num1 - num2, etc.
-
-// render using an i++ loop, use that to generate IDs, use that for re-running old calcs.
+// stretch goal: render using an i++ loop, use that to generate IDs, use that for re-running old calcs.
