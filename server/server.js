@@ -11,7 +11,7 @@ app.listen(port, () => {
     console.log('server running on port', port);
 });
 
-let currentOperator;
+
 let currentAnswer;
 let calcHistoryArray = []
 
