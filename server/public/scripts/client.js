@@ -149,12 +149,3 @@ function submitCalcPost() {
         alert('submitCalc POST request failed. Try again later.')
     })
 }
-
-// *client* create an objectwith num1, num2, and operator
-// *server* for loop to evaluate, with if/else logic dependent on operator in the object passed.
-
-// discuss with Paige.
-// External libraries and eval() are verboten.
-// Other option is some kind of string parsing, I think.
-
-// stretch goal: render using an i++ loop, use that to generate IDs, use that for re-running old calcs.
