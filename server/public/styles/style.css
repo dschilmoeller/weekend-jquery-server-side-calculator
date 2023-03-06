@@ -1,0 +1,17 @@
+table {
+    table-layout: auto;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid black;
+    text-align: center;
+
+}
+
+
+* {
+    text-align: center;
+}
+
+div {
+    padding-top: 2rem;
+}

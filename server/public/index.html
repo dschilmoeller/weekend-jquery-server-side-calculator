@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vendors/jquery-3.6.3.js"></script>
+    <script src="./scripts/client.js"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>SERVER SIDE CALCULATOR</title>
 </head>
+
 <body>
     <h1>Calculatron</h1>
-</body>
+    <div id="inputArea">
+        <input id="numberOneInput" class="inputFormField" type="number" placeholder="enter a number">
+        <button id="plusSign">+</button>
+        <button id="minusSign">-</button>
+        <button id="multiplySign">*</button>
+        <button id="divideSign">/</button>
+        <input id="numberTwoInput" class="inputFormField" type="number" placeholder="enter a numnber">
+        <button id="submitButton">=</button>
+        <button id="clearButton">C</button>
+      </div>
+    
+      <div id="currentAnswerArea">
+        <!-- answer to current calc will be rendered here -->
+        <!-- the below will be appended -->
+        <table>
+          <thead>
+            <tr>
+              <td>Current Computation</td>
+              <td>Current Answer</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    
+    
+    <div>
+        <table id="calcHistoryArea">
+        <!-- previous calculations will be rendered here -->
+        </table>
+    </div>
 </html>
